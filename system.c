@@ -13,6 +13,7 @@ void interrupt low_priority System_LowPriorityInterrupt()
 void System_Init()
 {
     TRISD = 0b11111110;
+    TRISC = 0b00011000;
     ACTIVE_LED = 0;
     
     //Initialize USART
@@ -25,8 +26,6 @@ void System_Init()
     CloseI2C();
     OpenI2C(MASTER, SLEW_OFF);
     SSPADD = 0x0A;
-    IdleI2C();
-    StartI2C();
     
     ACTIVE_LED = 1;
 }

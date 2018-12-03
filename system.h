@@ -12,6 +12,9 @@
 #include <i2c.h>
 #include <usart.h>
 #include <timers.h>
+#include <stdlib.h>
+
+typedef unsigned char byte;
 
 void interrupt high_priority System_HighPriorityInterrupt();
 
