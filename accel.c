@@ -1,16 +1,9 @@
 #include "accel.h"
 
-char init[] = "Initialized Accelerometer\n\r";
-
 int Accel_Init()
 {
     while (Accel_ReadRegister(WHO_AM_I) != 0x2A);
-    putsUSART(init);
-    
-    char out[20];
-    itoa(Accel_ReadRegister(WHO_AM_I), out, 16);
-    putsUSART(out);
-    
+
     Accel_StandBy();
     
     //Set up the full scale range to 2, 4, or 8g.
