@@ -1,27 +1,22 @@
-/* 
- * File:   gyros.h
- * Author: luizg
- *
- * Created on 3 de Dezembro de 2018, 20:03
- */
-
 #ifndef GYROS_H
 #define	GYROS_H
 
 #include "system.h"
 #include "accel.h"
 
-#define G_CONV 9.80665
+#define RAD_2_EULER 57.296
 
-typedef struct { double theta, phi; } angle;
+//psi - rotation around the x axis
+//theta - rotation around the y axys
+//phi - upside or upsidedown 
+typedef struct { double theta, psi, phi; } rotation;
 
-static angle Gyros_Angle;
-static vec3f Gyros_LastAccel;
-static vec3f Gyros_Vel;
+rotation Gyros_Rot;
+vec3f Gyros_Accel;
 
 void Gyros_Init();
-
-void Gyros_Update(float dt);
+void Gyros_Update();
+void Gyros_UpdateRotation(vec3f* accel);
 
 #endif	/* GYROS_H */
 

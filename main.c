@@ -66,15 +66,14 @@
 
 void main() {
     System_Init();
-    
-    ACTIVE_LED = 0;
     Accel_Init();
     Gyros_Init();
-    ACTIVE_LED = 1;
     
     while (1) {
-       ACTIVE_LED = ~ACTIVE_LED;
-       Gyros_Update(1.0f);
+       //ACTIVE_LED = ~ACTIVE_LED;
+       Gyros_Update();
+       Controls_Update();
+       
        __delay_us(500);
     }
 }
