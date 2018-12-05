@@ -3,17 +3,19 @@
 [d edition pro ]
 [d chip 18F45K20 ]
 [d frameptr 4065 ]
-"18 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\accel.c
+"3 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\accel.c
+[v _Accel_Init Accel_Init `(v  1 e 0 0 ]
+"21
 [v _Accel_StandBy Accel_StandBy `(v  1 e 0 0 ]
-"24
+"27
 [v _Accel_Active Accel_Active `(v  1 e 0 0 ]
-"30
+"33
 [v _Accel_Get Accel_Get `(v  1 e 0 0 ]
-"53
+"59
 [v _Accel_WriteRegister Accel_WriteRegister `(v  1 e 0 0 ]
-"70
+"69
 [v _Accel_ReadRegister Accel_ReadRegister `(uc  1 e 1 0 ]
-"79
+"77
 [v _Accel_ReadRegisters Accel_ReadRegisters `(v  1 e 0 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\acos.c
 [v _acos acos `(d  1 e 4 0 ]
@@ -77,6 +79,12 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "19 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_clos.c
 [v _CloseI2C CloseI2C `(v  1 e 0 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_eeap.c
+[v _EEAckPolling EEAckPolling `(c  1 e 1 0 ]
+"17 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_eebw.c
+[v _EEByteWrite EEByteWrite `(c  1 e 1 0 ]
+"18 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_eesr.c
+[v _EESequentialRead EESequentialRead `(c  1 e 1 0 ]
 "17 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_gets.c
 [v _getsI2C getsI2C `(c  1 e 1 0 ]
 "24 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_idle.c
@@ -91,6 +99,10 @@
 [v _baudUSART baudUSART `(v  1 e 0 0 ]
 "73 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\USART\uopen.c
 [v _OpenUSART OpenUSART `(v  1 e 0 0 ]
+"3 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\gyros.c
+[v _Gyros_Init Gyros_Init `(v  1 e 0 0 ]
+"17
+[v _Gyros_Update Gyros_Update `(v  1 e 0 0 ]
 "67 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\main.c
 [v _main main `(v  1 e 0 0 ]
 "3 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\system.c
@@ -134,7 +146,7 @@
 ]
 [u S64 . 1 `S32 1 . 1 0 `S41 1 . 1 0 `S43 1 . 1 0 `S46 1 . 1 0 `S49 1 . 1 0 `S52 1 . 1 0 `S55 1 . 1 0 `S58 1 . 1 0 `S61 1 . 1 0 ]
 [v _LATCbits LATCbits `VES64  1 e 1 @3979 ]
-[s S164 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S176 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -144,7 +156,7 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "2742
-[s S173 . 1 `uc 1 RC0 1 0 :1:0 
+[s S185 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -153,11 +165,11 @@
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S182 . 1 `S164 1 . 1 0 `S173 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES182  1 e 1 @3988 ]
+[u S194 . 1 `S176 1 . 1 0 `S185 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES194  1 e 1 @3988 ]
 "3372
 [v _PIE1 PIE1 `VEuc  1 e 1 @3997 ]
-[s S675 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S666 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -167,15 +179,15 @@
 `uc 1 PSPIE 1 0 :1:7 
 ]
 "3397
-[s S684 . 1 `uc 1 . 1 0 :5:0 
+[s S675 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RC1IE 1 0 :1:5 
 ]
-[s S687 . 1 `uc 1 . 1 0 :4:0 
+[s S678 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IE 1 0 :1:4 
 ]
-[u S690 . 1 `S675 1 . 1 0 `S684 1 . 1 0 `S687 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES690  1 e 1 @3997 ]
-[s S640 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S681 . 1 `S666 1 . 1 0 `S675 1 . 1 0 `S678 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES681  1 e 1 @3997 ]
+[s S631 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -185,17 +197,35 @@
 `uc 1 PSPIF 1 0 :1:7 
 ]
 "3476
-[s S649 . 1 `uc 1 . 1 0 :5:0 
+[s S640 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RC1IF 1 0 :1:5 
 ]
-[s S652 . 1 `uc 1 . 1 0 :4:0 
+[s S643 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IF 1 0 :1:4 
 ]
-[u S655 . 1 `S640 1 . 1 0 `S649 1 . 1 0 `S652 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES655  1 e 1 @3998 ]
+[u S646 . 1 `S631 1 . 1 0 `S640 1 . 1 0 `S643 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES646  1 e 1 @3998 ]
+[s S789 . 1 `uc 1 CCP2IF 1 0 :1:0 
+`uc 1 TMR3IF 1 0 :1:1 
+`uc 1 HLVDIF 1 0 :1:2 
+`uc 1 BCLIF 1 0 :1:3 
+`uc 1 EEIF 1 0 :1:4 
+`uc 1 C2IF 1 0 :1:5 
+`uc 1 C1IF 1 0 :1:6 
+`uc 1 OSCFIF 1 0 :1:7 
+]
+"3713
+[s S798 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 LVDIF 1 0 :1:2 
+]
+[s S801 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 CMIF 1 0 :1:6 
+]
+[u S804 . 1 `S789 1 . 1 0 `S798 1 . 1 0 `S801 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES804  1 e 1 @4001 ]
 "3984
 [v _RCSTA RCSTA `VEuc  1 e 1 @4011 ]
-[s S586 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S577 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -205,25 +235,25 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "4025
-[s S595 . 1 `uc 1 . 1 0 :3:0 
+[s S586 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S598 . 1 `uc 1 . 1 0 :5:0 
+[s S589 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[s S601 . 1 `uc 1 . 1 0 :6:0 
+[s S592 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S604 . 1 `uc 1 . 1 0 :6:0 
+[s S595 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S607 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S598 . 1 `uc 1 RCD8 1 0 :1:0 
 ]
-[u S609 . 1 `S586 1 . 1 0 `S595 1 . 1 0 `S598 1 . 1 0 `S601 1 . 1 0 `S604 1 . 1 0 `S607 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES609  1 e 1 @4011 ]
+[u S600 . 1 `S577 1 . 1 0 `S586 1 . 1 0 `S589 1 . 1 0 `S592 1 . 1 0 `S595 1 . 1 0 `S598 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES600  1 e 1 @4011 ]
 "4193
 [v _TXSTA TXSTA `VEuc  1 e 1 @4012 ]
-[s S248 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S260 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -233,36 +263,36 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "4253
-[s S257 . 1 `uc 1 . 1 0 :2:0 
+[s S269 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 BRGH1 1 0 :1:2 
 ]
-[s S260 . 1 `uc 1 . 1 0 :7:0 
+[s S272 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S263 . 1 `uc 1 . 1 0 :3:0 
+[s S275 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SENDB1 1 0 :1:3 
 ]
-[s S266 . 1 `uc 1 . 1 0 :4:0 
+[s S278 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 SYNC1 1 0 :1:4 
 ]
-[s S269 . 1 `uc 1 . 1 0 :1:0 
+[s S281 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 ]
-[s S272 . 1 `uc 1 . 1 0 :6:0 
+[s S284 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX91 1 0 :1:6 
 ]
-[s S275 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S287 . 1 `uc 1 TX9D1 1 0 :1:0 
 ]
-[s S277 . 1 `uc 1 . 1 0 :5:0 
+[s S289 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 TXEN1 1 0 :1:5 
 ]
-[s S280 . 1 `uc 1 . 1 0 :6:0 
+[s S292 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S283 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S295 . 1 `uc 1 TXD8 1 0 :1:0 
 ]
-[u S285 . 1 `S248 1 . 1 0 `S257 1 . 1 0 `S260 1 . 1 0 `S263 1 . 1 0 `S266 1 . 1 0 `S269 1 . 1 0 `S272 1 . 1 0 `S275 1 . 1 0 `S277 1 . 1 0 `S280 1 . 1 0 `S283 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES285  1 e 1 @4012 ]
+[u S297 . 1 `S260 1 . 1 0 `S269 1 . 1 0 `S272 1 . 1 0 `S275 1 . 1 0 `S278 1 . 1 0 `S281 1 . 1 0 `S284 1 . 1 0 `S287 1 . 1 0 `S289 1 . 1 0 `S292 1 . 1 0 `S295 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES297  1 e 1 @4012 ]
 "4512
 [v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
 "4523
@@ -271,7 +301,7 @@
 [v _BAUDCON BAUDCON `VEuc  1 e 1 @4024 ]
 "5561
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @4037 ]
-[s S418 . 1 `uc 1 SEN 1 0 :1:0 
+[s S768 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -281,30 +311,113 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "5578
-[u S427 . 1 `S418 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES427  1 e 1 @4037 ]
+[u S777 . 1 `S768 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES777  1 e 1 @4037 ]
 "5622
 [v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
+[s S1248 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"5642
+[s S1254 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S1259 . 1 `S1248 1 . 1 0 `S1254 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES1259  1 e 1 @4038 ]
 "5691
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
+[s S971 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W 1 0 :1:2 
+]
+"5775
+[s S974 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A 1 0 :1:5 
+]
+[s S977 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S986 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S991 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 A 1 0 :1:5 
+]
+[s S996 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S1001 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S1006 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE 1 0 :1:2 
+]
+[s S1009 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS 1 0 :1:5 
+]
+[s S1012 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S1017 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 START 1 0 :1:3 
+`uc 1 STOP 1 0 :1:4 
+]
+[s S1021 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 DA 1 0 :1:5 
+]
+[s S1024 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW 1 0 :1:2 
+]
+[s S1027 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_W 1 0 :1:2 
+]
+[s S1030 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_A 1 0 :1:5 
+]
+[u S1033 . 1 `S971 1 . 1 0 `S974 1 . 1 0 `S977 1 . 1 0 `S986 1 . 1 0 `S991 1 . 1 0 `S996 1 . 1 0 `S1001 1 . 1 0 `S1006 1 . 1 0 `S1009 1 . 1 0 `S1012 1 . 1 0 `S1017 1 . 1 0 `S1021 1 . 1 0 `S1024 1 . 1 0 `S1027 1 . 1 0 `S1030 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES1033  1 e 1 @4039 ]
 "5919
 [v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
-[s S134 . 1 `uc 1 SCS 1 0 :2:0 
+"5925
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+[s S146 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 IOFS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 `uc 1 IDLEN 1 0 :1:7 
 ]
 "6688
-[s S140 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S152 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S147 . 1 `S134 1 . 1 0 `S140 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES147  1 e 1 @4051 ]
+[u S159 . 1 `S146 1 . 1 0 `S152 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES159  1 e 1 @4051 ]
+"3 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\errno.c
+[v _errno errno `i  1 e 2 0 ]
 [s S21 . 8 `d 1 theta 4 0 `d 1 phi 4 4 ]
 "16 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\gyros.h
 [v gyros@Gyros_Angle Gyros_Angle `S21  1 s 8 Gyros_Angle ]
@@ -316,9 +429,7 @@
 "67 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"79
-[v main@i i `i  1 a 2 21 ]
-"81
+"80
 } 0
 "13 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\system.c
 [v _System_Init System_Init `(v  1 e 0 0 ]
@@ -331,7 +442,7 @@
 [v baudUSART@baudconfig baudconfig `uc  1 a 1 wreg ]
 [v baudUSART@baudconfig baudconfig `uc  1 a 1 wreg ]
 "17
-[v baudUSART@baudconfig baudconfig `uc  1 a 1 17 ]
+[v baudUSART@baudconfig baudconfig `uc  1 a 1 31 ]
 "18
 } 0
 "73 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\USART\uopen.c
@@ -339,9 +450,9 @@
 {
 [v OpenUSART@config config `uc  1 a 1 wreg ]
 [v OpenUSART@config config `uc  1 a 1 wreg ]
-[v OpenUSART@spbrg spbrg `ui  1 p 2 17 ]
+[v OpenUSART@spbrg spbrg `ui  1 p 2 31 ]
 "75
-[v OpenUSART@config config `uc  1 a 1 19 ]
+[v OpenUSART@config config `uc  1 a 1 33 ]
 "143
 } 0
 "14 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_open.c
@@ -349,15 +460,404 @@
 {
 [v OpenI2C@sync_mode sync_mode `uc  1 a 1 wreg ]
 [v OpenI2C@sync_mode sync_mode `uc  1 a 1 wreg ]
-[v OpenI2C@slew slew `uc  1 p 1 17 ]
+[v OpenI2C@slew slew `uc  1 p 1 31 ]
 "16
-[v OpenI2C@sync_mode sync_mode `uc  1 a 1 18 ]
+[v OpenI2C@sync_mode sync_mode `uc  1 a 1 32 ]
 "26
 } 0
 "19 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_clos.c
 [v _CloseI2C CloseI2C `(v  1 e 0 0 ]
 {
 "22
+} 0
+"17 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\gyros.c
+[v _Gyros_Update Gyros_Update `(v  1 e 0 0 ]
+{
+[s S24 . 12 `f 1 x 4 0 `f 1 y 4 4 `f 1 z 4 8 ]
+"19
+[v Gyros_Update@a a `S24  1 a 12 56 ]
+"17
+[v Gyros_Update@dt dt `f  1 p 4 123 ]
+"32
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\pow.c
+[v _pow pow `(d  1 e 4 0 ]
+{
+"8
+[v pow@yi yi `ul  1 a 4 82 ]
+"7
+[v pow@sign sign `uc  1 a 1 81 ]
+"5
+[v pow@x x `d  1 p 4 65 ]
+[v pow@y y `d  1 p 4 69 ]
+"31
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\log.c
+[v _log log `(d  1 e 4 0 ]
+{
+"7
+[v log@exponent exponent `i  1 a 2 50 ]
+"5
+[v log@x x `d  1 p 4 46 ]
+"9
+[v log@coeff coeff `C[9]d  1 s 36 coeff ]
+"36
+} 0
+"12 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\exp.c
+[v _exp exp `(d  1 e 4 0 ]
+{
+"14
+[v exp@exponent exponent `i  1 a 2 62 ]
+"15
+[v exp@sign sign `uc  1 a 1 64 ]
+"12
+[v exp@x x `d  1 p 4 54 ]
+"17
+[v exp@coeff coeff `C[10]d  1 s 40 coeff ]
+"57
+} 0
+"277 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\frexp.c
+[v _ldexp ldexp `(d  1 e 4 0 ]
+{
+[v ldexp@value value `d  1 p 4 46 ]
+[v ldexp@newexp newexp `i  1 p 2 50 ]
+"307
+} 0
+"13 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\floor.c
+[v _floor floor `(d  1 e 4 0 ]
+{
+"15
+[v floor@i i `d  1 a 4 19 ]
+"16
+[v floor@expon expon `i  1 a 2 23 ]
+"13
+[v floor@x x `d  1 p 4 15 ]
+"30
+} 0
+"254 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\frexp.c
+[v _frexp frexp `(d  1 e 4 0 ]
+{
+[v frexp@value value `d  1 p 4 31 ]
+[v frexp@eptr eptr `*.39i  1 p 2 35 ]
+"274
+} 0
+"43 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 40 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 39 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 31 ]
+"70
+} 0
+"36 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\altofl.c
+[v ___altofl __altofl `(d  1 e 4 0 ]
+{
+"38
+[v ___altofl@sign sign `uc  1 a 1 41 ]
+"36
+[v ___altofl@c c `l  1 p 4 0 ]
+"46
+} 0
+"30 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lltofl.c
+[v ___lltofl __lltofl `(d  1 e 4 0 ]
+{
+[v ___lltofl@c c `ul  1 p 4 0 ]
+"33
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\acos.c
+[v _acos acos `(d  1 e 4 0 ]
+{
+[v acos@x x `d  1 p 4 115 ]
+"11
+} 0
+"9 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\asin.c
+[v _asin asin `(d  1 e 4 0 ]
+{
+"11
+[v asin@y y `d  1 a 4 16 ]
+"12
+[v asin@sgn sgn `d  1 a 4 0 ]
+"9
+[v asin@x x `d  1 p 4 111 ]
+"25
+} 0
+"13 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\sqrt.c
+[v _sqrt sqrt `(d  1 e 4 0 ]
+{
+"15
+[v sqrt@x x `d  1 a 4 107 ]
+[v sqrt@q q `d  1 a 4 103 ]
+[v sqrt@z z `d  1 a 4 98 ]
+[v sqrt@og og `d  1 a 4 94 ]
+"16
+[v sqrt@i i `uc  1 a 1 102 ]
+"13
+[v sqrt@y y `d  1 p 4 86 ]
+"44
+} 0
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flsub.c
+[v ___flsub __flsub `(d  1 e 4 0 ]
+{
+[v ___flsub@f1 f1 `d  1 p 4 15 ]
+[v ___flsub@f2 f2 `d  1 p 4 19 ]
+"32
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\atan.c
+[v _atan atan `(d  1 e 4 0 ]
+{
+"28
+[v atan@val val `d  1 a 4 63 ]
+[v atan@val_squared val_squared `d  1 a 4 59 ]
+[v atan@x x `d  1 a 4 54 ]
+[v atan@y y `d  1 a 4 50 ]
+"27
+[v atan@recip recip `uc  1 a 1 58 ]
+"8
+[v atan@f f `d  1 p 4 46 ]
+"10
+[v atan@coeff_a coeff_a `C[6]d  1 s 24 coeff_a ]
+"19
+[v atan@coeff_b coeff_b `C[5]d  1 s 20 coeff_b ]
+"41
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fabs.c
+[v _fabs fabs `(d  1 e 4 0 ]
+{
+[v fabs@d d `d  1 p 4 35 ]
+"9
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flneg.c
+[v ___flneg __flneg `(d  1 e 4 0 ]
+{
+[v ___flneg@f1 f1 `d  1 p 4 31 ]
+"20
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\evalpoly.c
+[v _eval_poly eval_poly `(d  1 e 4 0 ]
+{
+"6
+[v eval_poly@res res `d  1 a 4 42 ]
+"4
+[v eval_poly@x x `d  1 p 4 30 ]
+[v eval_poly@d d `*.32Cd  1 p 2 34 ]
+[v eval_poly@n n `i  1 p 2 36 ]
+"12
+} 0
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+{
+"65
+[v ___flmul@f3_as_product f3_as_product `ul  1 a 4 24 ]
+"64
+[v ___flmul@sign sign `uc  1 a 1 29 ]
+[v ___flmul@cntr cntr `uc  1 a 1 28 ]
+[v ___flmul@exp exp `uc  1 a 1 23 ]
+"62
+[v ___flmul@f1 f1 `d  1 p 4 15 ]
+[v ___flmul@f2 f2 `d  1 p 4 19 ]
+"220
+} 0
+"88 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fladd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+{
+"90
+[v ___fladd@exp1 exp1 `uc  1 a 1 14 ]
+[v ___fladd@exp2 exp2 `uc  1 a 1 13 ]
+[v ___fladd@sign sign `uc  1 a 1 12 ]
+"88
+[v ___fladd@f1 f1 `d  1 p 4 4 ]
+[v ___fladd@f2 f2 `d  1 p 4 8 ]
+"149
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flge.c
+[v ___flge __flge `(b  1 e 0 0 ]
+{
+[v ___flge@ff1 ff1 `d  1 p 4 0 ]
+[v ___flge@ff2 ff2 `d  1 p 4 4 ]
+"13
+} 0
+"33 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\accel.c
+[v _Accel_Get Accel_Get `(v  1 e 0 0 ]
+{
+"45
+[v Accel_Get@gCount gCount `i  1 a 2 59 ]
+"43
+[v Accel_Get@i i `i  1 a 2 63 ]
+"35
+[v Accel_Get@raw raw `[6]uc  1 a 6 53 ]
+"36
+[v Accel_Get@f_out f_out `*.39f  1 a 2 61 ]
+[s S24 . 12 `f 1 x 4 0 `f 1 y 4 4 `f 1 z 4 8 ]
+"33
+[v Accel_Get@out out `*.39S24  1 p 2 45 ]
+"57
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 35 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 31 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 33 ]
+"53
+} 0
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fldiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+{
+"60
+[v ___fldiv@f3 f3 `d  1 a 4 38 ]
+"59
+[v ___fldiv@sign sign `uc  1 a 1 44 ]
+[v ___fldiv@exp exp `uc  1 a 1 43 ]
+[v ___fldiv@cntr cntr `uc  1 a 1 42 ]
+"54
+[v ___fldiv@f1 f1 `d  1 p 4 30 ]
+[v ___fldiv@f2 f2 `d  1 p 4 34 ]
+"85
+} 0
+"31 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awtofl.c
+[v ___awtofl __awtofl `(d  1 e 4 0 ]
+{
+"34
+[v ___awtofl@sign sign `uc  1 a 1 41 ]
+"31
+[v ___awtofl@c c `i  1 p 2 0 ]
+"42
+} 0
+"63 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\double.c
+[v ___flpack __flpack `(d  1 e 4 0 ]
+{
+[v ___flpack@arg arg `ul  1 p 4 31 ]
+[v ___flpack@exp exp `uc  1 p 1 35 ]
+[v ___flpack@sign sign `uc  1 p 1 36 ]
+"87
+} 0
+"3 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\gyros.c
+[v _Gyros_Init Gyros_Init `(v  1 e 0 0 ]
+{
+"15
+} 0
+"3 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\accel.c
+[v _Accel_Init Accel_Init `(v  1 e 0 0 ]
+{
+"13
+[v Accel_Init@fsr fsr `uc  1 a 1 5 ]
+"5
+[v Accel_Init@name name `uc  1 a 1 4 ]
+"19
+} 0
+"21
+[v _Accel_StandBy Accel_StandBy `(v  1 e 0 0 ]
+{
+"23
+[v Accel_StandBy@c c `uc  1 a 1 43 ]
+"25
+} 0
+"27
+[v _Accel_Active Accel_Active `(v  1 e 0 0 ]
+{
+"29
+[v Accel_Active@c c `uc  1 a 1 43 ]
+"31
+} 0
+"59
+[v _Accel_WriteRegister Accel_WriteRegister `(v  1 e 0 0 ]
+{
+[v Accel_WriteRegister@reg reg `uc  1 a 1 wreg ]
+"61
+[v Accel_WriteRegister@status status `c  1 a 1 38 ]
+"59
+[v Accel_WriteRegister@reg reg `uc  1 a 1 wreg ]
+[v Accel_WriteRegister@value value `uc  1 p 1 36 ]
+[v Accel_WriteRegister@reg reg `uc  1 a 1 37 ]
+"67
+} 0
+"17 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_eebw.c
+[v _EEByteWrite EEByteWrite `(c  1 e 1 0 ]
+{
+[v EEByteWrite@control control `uc  1 a 1 wreg ]
+[v EEByteWrite@control control `uc  1 a 1 wreg ]
+[v EEByteWrite@address address `uc  1 p 1 33 ]
+[v EEByteWrite@data data `uc  1 p 1 34 ]
+"19
+[v EEByteWrite@control control `uc  1 a 1 35 ]
+"73
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_eeap.c
+[v _EEAckPolling EEAckPolling `(c  1 e 1 0 ]
+{
+[v EEAckPolling@control control `uc  1 a 1 wreg ]
+[v EEAckPolling@control control `uc  1 a 1 wreg ]
+"17
+[v EEAckPolling@control control `uc  1 a 1 33 ]
+"57
+} 0
+"69 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\accel.c
+[v _Accel_ReadRegister Accel_ReadRegister `(uc  1 e 1 0 ]
+{
+[v Accel_ReadRegister@reg reg `uc  1 a 1 wreg ]
+"71
+[v Accel_ReadRegister@out out `uc  1 a 1 3 ]
+"69
+[v Accel_ReadRegister@reg reg `uc  1 a 1 wreg ]
+"71
+[v Accel_ReadRegister@reg reg `uc  1 a 1 2 ]
+"75
+} 0
+"77
+[v _Accel_ReadRegisters Accel_ReadRegisters `(v  1 e 0 0 ]
+{
+[v Accel_ReadRegisters@reg reg `uc  1 a 1 wreg ]
+"79
+[v Accel_ReadRegisters@status status `c  1 a 1 1 ]
+"77
+[v Accel_ReadRegisters@reg reg `uc  1 a 1 wreg ]
+[v Accel_ReadRegisters@out out `*.39uc  1 p 2 39 ]
+[v Accel_ReadRegisters@length length `i  1 p 2 41 ]
+"79
+[v Accel_ReadRegisters@reg reg `uc  1 a 1 0 ]
+"84
+} 0
+"18 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_eesr.c
+[v _EESequentialRead EESequentialRead `(c  1 e 1 0 ]
+{
+[v EESequentialRead@control control `uc  1 a 1 wreg ]
+[v EESequentialRead@control control `uc  1 a 1 wreg ]
+[v EESequentialRead@address address `uc  1 p 1 34 ]
+[v EESequentialRead@rdptr rdptr `*.39uc  1 p 2 35 ]
+[v EESequentialRead@length length `uc  1 p 1 37 ]
+"20
+[v EESequentialRead@control control `uc  1 a 1 38 ]
+"91
+} 0
+"17 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_gets.c
+[v _getsI2C getsI2C `(c  1 e 1 0 ]
+{
+[v getsI2C@rdptr rdptr `*.39uc  1 p 2 31 ]
+[v getsI2C@length length `uc  1 p 1 33 ]
+"41
+} 0
+"11 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_read.c
+[v _ReadI2C ReadI2C `(uc  1 e 1 0 ]
+{
+"17
+} 0
+"12 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_writ.c
+[v _WriteI2C WriteI2C `(c  1 e 1 0 ]
+{
+[v WriteI2C@data_out data_out `uc  1 a 1 wreg ]
+[v WriteI2C@data_out data_out `uc  1 a 1 wreg ]
+"14
+[v WriteI2C@data_out data_out `uc  1 a 1 32 ]
+"43
+} 0
+"24 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\i2c\i2c_idle.c
+[v _IdleI2C IdleI2C `(v  1 e 0 0 ]
+{
+"28
 } 0
 "8 C:\Users\luizg\Documents\MPLABXProjects\RemoteGestureControl.X\system.c
 [v _System_LowPriorityInterrupt System_LowPriorityInterrupt `IIL(v  1 e 0 0 ]

@@ -3,7 +3,10 @@
 
 #include "system.h"
     
-#define MMA8452_ADDRESS 0x1D  // 0x1D if SA0 is high, 0x1C if low
+//SAO = 0
+//#define MMA8452_ADDRESS 0x38
+//SAO = 1
+#define MMA8452_ADDRESS 0x3A
 
 //Define a few of the registers that we will be accessing on the MMA8452
 #define OUT_X_MSB 0x01

@@ -11,6 +11,8 @@
 #include "system.h"
 #include "accel.h"
 
+#define G_CONV 9.80665
+
 typedef struct { double theta, phi; } angle;
 
 static angle Gyros_Angle;

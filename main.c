@@ -75,7 +75,6 @@ void main() {
     while (1) {
        ACTIVE_LED = ~ACTIVE_LED;
        Gyros_Update(1.0f);
-       
-       for (int i = 0; i < 100; i++) __delay_ms(10);
+       __delay_us(500);
     }
 }

@@ -2,8 +2,10 @@
 
 void Accel_Init()
 {
-    byte name = Accel_ReadRegister(WHO_AM_I);
-    while (name != 0x2A);
+    byte name;
+    do {
+        name = Accel_ReadRegister(WHO_AM_I);
+    } while (name != 0x2A);
 
     Accel_StandBy();
     
@@ -31,7 +33,10 @@ void Accel_Active()
 void Accel_Get(vec3f* out)
 {
     char raw[6];
-    float* f_out = (float*) &out;
+    float* f_out = (float*) out;
+    f_out[0] = 0;
+    f_out[1] = 0;
+    f_out[2] = 0;
     
     Accel_ReadRegisters(OUT_X_MSB, raw, 6);
     
@@ -53,17 +58,27 @@ void Accel_Get(vec3f* out)
 
 void Accel_WriteRegister(byte reg, byte value)
 {
-    EEByteWrite(MMA8452_ADDRESS, reg, value);
+    signed char status;
+    do {
+        status = EEByteWrite(MMA8452_ADDRESS, reg, value);
+    } while (status != 0);
+    
+    EEAckPolling(MMA8452_ADDRESS);
 }
 
 byte Accel_ReadRegister(byte reg)
 {
     byte out = 0;
-    EESequentialRead(MMA8452_ADDRESS, reg, &out, 1);
+    Accel_ReadRegisters(reg, &out, 1);
+
     return out;
 }
 
 void Accel_ReadRegisters(byte reg, byte* out, int length)
 {
-    EESequentialRead(MMA8452_ADDRESS, reg, out, length);
+    signed char status = 0;
+    
+    do {
+        status = EESequentialRead(MMA8452_ADDRESS, reg, out, length);
+    } while (status != 0);
 }
