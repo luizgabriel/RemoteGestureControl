@@ -12,8 +12,9 @@ void interrupt low_priority System_LowPriorityInterrupt()
 
 void System_Init()
 {
-    TRISD = 0b11111110;
-    TRISC = 0b00011000;
+    OSCCONbits.SCS = 0b11; //Internal Osccilator
+    OSCCONbits.IRCF = 0b111; //16 MHz
+    TRISCbits.RC0 = 0; //RC0 Output
     ACTIVE_LED = 0;
     
     //Initialize USART
@@ -25,7 +26,10 @@ void System_Init()
     //Initialize I2C
     CloseI2C();
     OpenI2C(MASTER, SLEW_OFF);
-    SSPADD = 0x0A;
+    
+    // ((Fosc/BitRate)/4)-1 
+    SSPADD = 39; //100kHz Baud clock(39) @16MHz
+                //400kHz Baud clock(9) @16MHz
     
     ACTIVE_LED = 1;
 }

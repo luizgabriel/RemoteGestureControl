@@ -1,8 +1,9 @@
 #include "accel.h"
 
-int Accel_Init()
+void Accel_Init()
 {
-    while (Accel_ReadRegister(WHO_AM_I) != 0x2A);
+    byte name = Accel_ReadRegister(WHO_AM_I);
+    while (name != 0x2A);
 
     Accel_StandBy();
     
@@ -18,7 +19,7 @@ int Accel_Init()
 void Accel_StandBy()
 {
     byte c = Accel_ReadRegister(CTRL_REG1);
-    Accel_WriteRegister(CTRL_REG1, c & ~(0x01)); //Clear the active bit to go into standby
+    Accel_WriteRegister(CTRL_REG1, c & 0xFE); //Clear the active bit to go into standby
 }
 
 void Accel_Active()
@@ -50,46 +51,19 @@ void Accel_Get(vec3f* out)
     }
 }
 
-void Accel_WriteRegister(byte reg, byte data)
+void Accel_WriteRegister(byte reg, byte value)
 {
-    IdleI2C();
-    StartI2C();
-    while (SSPCON2bits.SEN);
-    
-    WriteI2C(MMA8452_ADDRESS & 0xFE);
-    IdleI2C();
-    
-    WriteI2C(reg);
-    IdleI2C();
-    
-    WriteI2C(data);
-    IdleI2C();
-    
-    StopI2C();
-    while (SSPCON2bits.PEN);
+    EEByteWrite(MMA8452_ADDRESS, reg, value);
 }
 
 byte Accel_ReadRegister(byte reg)
 {
     byte out = 0;
-    
-    Accel_ReadRegisters(reg, &out, 1);
-    
+    EESequentialRead(MMA8452_ADDRESS, reg, &out, 1);
     return out;
 }
 
 void Accel_ReadRegisters(byte reg, byte* out, int length)
 {
-    StartI2C();
-    while (SSPCON2bits.SEN);
-    
-    WriteI2C(MMA8452_ADDRESS | 0x01);
-    IdleI2C();
-    
-    getsI2C(out, length);
-    NotAckI2C();
-    while (SSPCON2bits.ACKEN);
-
-    StopI2C();
-    while (SSPCON2bits.PEN);
+    EESequentialRead(MMA8452_ADDRESS, reg, out, length);
 }

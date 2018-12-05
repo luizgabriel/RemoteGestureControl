@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>system.h</itemPath>
       <itemPath>accel.h</itemPath>
+      <itemPath>gyros.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,6 +18,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>system.c</itemPath>
       <itemPath>accel.c</itemPath>
+      <itemPath>gyros.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -29,7 +31,7 @@
     <conf name="default" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC18F4550</targetDevice>
+        <targetDevice>PIC18F45K20</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
@@ -38,7 +40,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC18Fxxxx_DFP" vendor="Microchip" version="1.0.7"/>
+        <pack name="PIC18F-K_DFP" vendor="Microchip" version="1.0.41"/>
       </packs>
       <compileType>
         <linkerTool>
@@ -183,7 +185,7 @@
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="programoptions.usehighvoltageonmclr" value="false"/>
         <property key="programoptions.uselvpprogramming" value="false"/>
-        <property key="voltagevalue" value="5.0"/>
+        <property key="voltagevalue" value="3.25"/>
       </PICkit3PlatformTool>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>

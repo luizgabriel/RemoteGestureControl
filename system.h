@@ -1,18 +1,19 @@
 #ifndef SYSTEM_H
 #define	SYSTEM_H
 
-#define _XTAL_FREQ 8000000
-#define __delay_us(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000000.0)))
-#define __delay_ms(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000.0)))
+#define _XTAL_FREQ 16000000
 #define USE_OR_MASKS
-#define ACTIVE_LED LATDbits.LATD0
+#define ACTIVE_LED LATCbits.LATC0
+#define I2C_IO_V1
 
 #include <xc.h> 
-#include <p18cxxx.h>
 #include <i2c.h>
 #include <usart.h>
 #include <timers.h>
-#include <stdlib.h>
+#include <math.h>
+#include <stdlib.h> 
+#include <stdio.h>
+
 
 typedef unsigned char byte;
 
