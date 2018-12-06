@@ -67,13 +67,19 @@
 void main() {
     System_Init();
     Accel_Init();
-    Gyros_Init();
+
+    vec3f accel;
+    rotation rot;
+    byte state = GYROS_INITIAL_STATE;
     
     while (1) {
-       //ACTIVE_LED = ~ACTIVE_LED;
-       Gyros_Update();
-       Controls_Update();
+       Accel_Get(&accel);
+       Gyros_CalculateRotation(&accel, &rot);
+       Gyros_UpdatePositionState(&state, &accel, &rot);
        
-       __delay_us(500);
+       //TODO: Create a bluetooh transmition using USART
+       //Comm_TransmitState(state);
+       
+       __delay_us(300);
     }
 }
