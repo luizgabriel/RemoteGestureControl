@@ -61,67 +61,25 @@
 //</editor-fold>
 
 #include "system.h"
-#include "accel.h"
-#include "gyros.h"
 #include "comm.h"
+#include "mpu6050.h"
 
-byte App_SendGyrosData(byte lastState, vec3f* accel, rotation* rot);
+void App_RunTasks();
 
 void main() {
     System_Init();
-    Accel_Init();
+    MPU_Init();
     //Comm_Init();
 
-    vec3f accel;
-    rotation rot;
-    byte state = GYROS_UNKNOWN;
-    
     while (1) {
-       Accel_Get(&accel);
-       Gyros_CalculateRotation(&accel, &rot);
-       state = App_SendGyrosData(state, &accel, &rot);
-       
-       __delay_us(500);
+        App_RunTasks();
     }
 }
 
-byte App_SendGyrosData(byte lastState, vec3f* accel, rotation* rot)
+void App_RunTasks()
 {
-    byte state = Gyros_GetState(lastState, accel, rot);
+    vec3 gyro;
+    MPU_GetGyro(&gyro);
     
-    if (state == GYROS_UP) {
-        WHITE_LED = 1;
-        GREEN_LED = 0;
-        YELLOW_LED = 0;
-        RED_LED = 0;
-        //Comm_Send(OBJ_GO);
-    } else if (state == GYROS_RIGHT) {
-        WHITE_LED = 0;
-        GREEN_LED = 0;
-        YELLOW_LED = 0;
-        RED_LED = 1; 
-        //Comm_Send(OBJ_TURN_RIGHT);
-    } else if (state == GYROS_LEFT) {
-        WHITE_LED = 0;
-        GREEN_LED = 0;
-        YELLOW_LED = 1;
-        RED_LED = 0;
-        //Comm_Send(OBJ_TURN_LEFT);
-    } else if (state == GYROS_DOWN) {
-        WHITE_LED = 0;
-        GREEN_LED = 1;
-        YELLOW_LED = 0;
-        RED_LED = 0;
-        //Comm_Send(OBJ_GO_BACK);
-    } else {
-        WHITE_LED = 0;
-        GREEN_LED = 0;
-        YELLOW_LED = 0;
-        RED_LED = 0;
-        
-        //if (state == GYROS_DROP)
-        //  Comm_Send(OBJ_STOP);
-    }
-    
-    return state;
+    __delay_us(300);
 }

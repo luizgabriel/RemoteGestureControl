@@ -13,6 +13,7 @@
 #include <usart.h>
 #include <timers.h>
 #include <math.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 typedef unsigned char byte;
