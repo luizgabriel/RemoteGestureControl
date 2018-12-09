@@ -7,13 +7,25 @@ void Gyros_CalculateRotation(vec3f* a, rotation* rot)
     rot->phi = atan(a->z / sqrt(pow(a->x, 2) + pow(a->y, 2))) * RAD_2_EULER;
 }
 
-void Gyros_UpdatePositionState(byte* state, vec3f* accel, rotation* rot)
+byte Gyros_GetState(byte lastState, vec3f* accel, rotation* rot)
 {
-    // TODO: Interpret accel and rot to a State Machine and update the previous state
+    byte stable = rot->phi > 70;
+    byte right = rot->theta > 60;
+    byte left = rot->theta < -60;
+    byte up = rot->psi < -60;
+    byte down = rot->psi > 60;
+    byte wasStable = lastState == GYROS_STABLE;
     
-    //Test code
-    if (rot->theta > 70 || rot->theta < -70 || rot->psi > 70 || rot->psi < -70)
-        ACTIVE_LED = 1;
+    if (right && (wasStable || lastState == GYROS_RIGHT))
+        return GYROS_RIGHT;
+    else if (left && (wasStable || lastState == GYROS_LEFT))
+        return GYROS_LEFT;
+    else if (up && !right && !left && (wasStable || lastState == GYROS_UP))
+        return GYROS_UP;
+    else if (down && (wasStable || lastState == GYROS_DOWN))
+        return GYROS_DOWN;
+    else if (stable)
+        return GYROS_STABLE;
     else
-        ACTIVE_LED = 0;
+        return lastState;
 }

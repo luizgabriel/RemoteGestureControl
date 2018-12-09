@@ -7,6 +7,7 @@
       <itemPath>system.h</itemPath>
       <itemPath>accel.h</itemPath>
       <itemPath>gyros.h</itemPath>
+      <itemPath>comm.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -19,6 +20,7 @@
       <itemPath>system.c</itemPath>
       <itemPath>accel.c</itemPath>
       <itemPath>gyros.c</itemPath>
+      <itemPath>comm.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

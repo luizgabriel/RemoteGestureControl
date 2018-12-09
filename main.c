@@ -63,23 +63,65 @@
 #include "system.h"
 #include "accel.h"
 #include "gyros.h"
+#include "comm.h"
+
+byte App_SendGyrosData(byte lastState, vec3f* accel, rotation* rot);
 
 void main() {
     System_Init();
     Accel_Init();
+    //Comm_Init();
 
     vec3f accel;
     rotation rot;
-    byte state = GYROS_INITIAL_STATE;
+    byte state = GYROS_UNKNOWN;
     
     while (1) {
        Accel_Get(&accel);
        Gyros_CalculateRotation(&accel, &rot);
-       Gyros_UpdatePositionState(&state, &accel, &rot);
+       state = App_SendGyrosData(state, &accel, &rot);
        
-       //TODO: Create a bluetooh transmition using USART
-       //Comm_TransmitState(state);
-       
-       __delay_us(300);
+       __delay_us(500);
     }
+}
+
+byte App_SendGyrosData(byte lastState, vec3f* accel, rotation* rot)
+{
+    byte state = Gyros_GetState(lastState, accel, rot);
+    
+    if (state == GYROS_UP) {
+        WHITE_LED = 1;
+        GREEN_LED = 0;
+        YELLOW_LED = 0;
+        RED_LED = 0;
+        //Comm_Send(OBJ_GO);
+    } else if (state == GYROS_RIGHT) {
+        WHITE_LED = 0;
+        GREEN_LED = 0;
+        YELLOW_LED = 0;
+        RED_LED = 1; 
+        //Comm_Send(OBJ_TURN_RIGHT);
+    } else if (state == GYROS_LEFT) {
+        WHITE_LED = 0;
+        GREEN_LED = 0;
+        YELLOW_LED = 1;
+        RED_LED = 0;
+        //Comm_Send(OBJ_TURN_LEFT);
+    } else if (state == GYROS_DOWN) {
+        WHITE_LED = 0;
+        GREEN_LED = 1;
+        YELLOW_LED = 0;
+        RED_LED = 0;
+        //Comm_Send(OBJ_GO_BACK);
+    } else {
+        WHITE_LED = 0;
+        GREEN_LED = 0;
+        YELLOW_LED = 0;
+        RED_LED = 0;
+        
+        //if (state == GYROS_DROP)
+        //  Comm_Send(OBJ_STOP);
+    }
+    
+    return state;
 }
