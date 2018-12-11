@@ -63,23 +63,24 @@
 #include "system.h"
 #include "comm.h"
 #include "mpu6050.h"
+#include "orientation.h"
 
-void App_RunTasks();
+orientation_t orient;
 
 void main() {
     System_Init();
-    MPU_Init();
-    //Comm_Init();
-
-    while (1) {
-        App_RunTasks();
-    }
-}
-
-void App_RunTasks()
-{
-    vec3 gyro;
-    MPU_GetGyro(&gyro);
+    OrientationSystem_Init(&orient);     
     
-    __delay_us(300);
+    while (1) {
+        OrientationSystem_Update(&orient);
+        
+        GREEN_LED = orient.rot.x > 40;
+        WHITE_LED = orient.rot.x < -40;
+        RED_LED = orient.rot.y > 40;
+        YELLOW_LED = orient.rot.y < -40;
+        
+        __delay_us(50);
+        
+        //Comm_Send();
+    }
 }

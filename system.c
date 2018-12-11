@@ -1,23 +1,14 @@
 #include "system.h"
 
-void interrupt high_priority System_HighPriorityInterrupt()
-{
-    //
-}
-
-void interrupt low_priority System_LowPriorityInterrupt()
-{
-    //
-}
-
 void System_Init()
 {
     OSCCONbits.SCS = 0b11; //Internal Osccilator
     OSCCONbits.IRCF = 0b111; //16 MHz
-    TRISDbits.RD0 = 0; //RD0 Output
-    TRISDbits.RD1 = 0; //RD1 Output
-    TRISDbits.RD2 = 0; //RD2 Output
-    TRISDbits.RD3 = 0; //RD3 Output
+    ANSELbits.ANS6 = 0; //Enables RE1 as Digital
+    TRISDbits.RD2 = 0;
+    TRISEbits.RE1 = 0;
+    TRISBbits.RB4 = 0;
+    TRISDbits.RD5 = 0;
     
     //Initialize USART
     CloseUSART();
@@ -35,4 +26,8 @@ void System_Init()
     // ((Fosc/BitRate)/4)-1 
     SSPADD = 39; //100kHz Baud clock(39) @16MHz
                  //400kHz Baud clock(9) @16MHz
+}
+
+float abs(float value) {
+    return (value < 0) ? -value : value;
 }

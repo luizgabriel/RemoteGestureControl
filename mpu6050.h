@@ -11,29 +11,10 @@
 #include "system.h"
 
 #define MPU6050_ADDRESS               (0xD0) 
-//#define MPU6050_ADDRESS             (0xD2)// when AD0 pin to Vcc
 
-#define MPU6050_REG_ACCEL_XOFFS_H     (0x06)
-#define MPU6050_REG_ACCEL_XOFFS_L     (0x07)
-#define MPU6050_REG_ACCEL_YOFFS_H     (0x08)
-#define MPU6050_REG_ACCEL_YOFFS_L     (0x09)
-#define MPU6050_REG_ACCEL_ZOFFS_H     (0x0A)
-#define MPU6050_REG_ACCEL_ZOFFS_L     (0x0B)
-#define MPU6050_REG_GYRO_XOFFS_H      (0x13)
-#define MPU6050_REG_GYRO_XOFFS_L      (0x14)
-#define MPU6050_REG_GYRO_YOFFS_H      (0x15)
-#define MPU6050_REG_GYRO_YOFFS_L      (0x16)
-#define MPU6050_REG_GYRO_ZOFFS_H      (0x17)
-#define MPU6050_REG_GYRO_ZOFFS_L      (0x18)
 #define MPU6050_REG_CONFIG            (0x1A)
 #define MPU6050_REG_GYRO_CONFIG       (0x1B) // Gyroscope Configuration
 #define MPU6050_REG_ACCEL_CONFIG      (0x1C) // Accelerometer Configuration
-#define MPU6050_REG_FF_THRESHOLD      (0x1D)
-#define MPU6050_REG_FF_DURATION       (0x1E)
-#define MPU6050_REG_MOT_THRESHOLD     (0x1F)
-#define MPU6050_REG_MOT_DURATION      (0x20)
-#define MPU6050_REG_ZMOT_THRESHOLD    (0x21)
-#define MPU6050_REG_ZMOT_DURATION     (0x22)
 #define MPU6050_REG_INT_PIN_CFG       (0x37) // INT Pin. Bypass Enable Configuration
 #define MPU6050_REG_INT_ENABLE        (0x38) // INT Enable
 #define MPU6050_REG_INT_STATUS        (0x3A)
@@ -57,7 +38,12 @@
 #define MPU6050_REG_PWR_MGMT_1        (0x6B) // Power Management 1
 #define MPU6050_REG_WHO_AM_I          (0x75) // Who Am I
 
-struct vec3 { float x, y, z; };
+typedef struct { float x, y, z; } vec3f;
+
+typedef struct {
+    float dpsPerDigit;
+    float rangePerDigit;
+} mpu_data_t;
 
 typedef enum
 {
@@ -70,20 +56,37 @@ typedef enum
     MPU6050_CLOCK_INTERNAL_8MHZ   = 0b000
 } mpu6050_clockSource_t;
 
-int MPU_Init();
+typedef enum
+{
+    MPU6050_SCALE_2000DPS         = 0b11,
+    MPU6050_SCALE_1000DPS         = 0b10,
+    MPU6050_SCALE_500DPS          = 0b01,
+    MPU6050_SCALE_250DPS          = 0b00
+} mpu6050_dps_t;
+
+typedef enum
+{
+    MPU6050_RANGE_16G             = 0b11,
+    MPU6050_RANGE_8G              = 0b10,
+    MPU6050_RANGE_4G              = 0b01,
+    MPU6050_RANGE_2G              = 0b00,
+} mpu6050_range_t;
+
+mpu_data_t MPU;
+
+int MPU_Init(mpu6050_range_t range, mpu6050_dps_t scale);
+void MPU_GetGyro(vec3f* out);
+void MPU_GetAccel(vec3f* out);
 void MPU_SetClockSource(mpu6050_clockSource_t source);
+void MPU_SetScale(mpu6050_dps_t scale);
+void MPU_SetRange(mpu6050_range_t range);
 void MPU_SetSleepEnabled(byte state);
-void MPU_SetGyroOffsetX(int offset);
-void MPU_SetGyroOffsetY(int offset);
-void MPU_SetGyroOffsetZ(int offset);
-void MPU_GetGyro(vec3* out);
 
 //<editor-fold desc="I2C Helpers" defaultstate="collapsed">
 byte MPU_ReadRegister(byte reg);
 void MPU_WriteRegister(byte reg, byte value);
 int MPU_ReadRegister16(byte reg);
 void MPU_WriteRegister16(byte reg, int value);
-byte MPU_ReadRegisterBit(byte reg, byte pos);
 void MPU_WriteRegisterBit(byte reg, byte pos, byte state);
 //</editor-fold>
 
