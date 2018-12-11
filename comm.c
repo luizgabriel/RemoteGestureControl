@@ -2,13 +2,13 @@
 
 void Comm_Init()
 {
-    putsUSART("AT\r\n"); //Test Connection
+    putsUSART((char*) "AT\r\n"); //Test Connection
     Comm_WaitsOK();
-    putsUSART("AT+NAME=RmGestCtrl\r\n"); // Set device name
+    putsUSART((char*) "AT+NAME=RmGestCtrl\r\n"); // Set device name
     Comm_WaitsOK();
-    putsUSART("AT+ROLE=1\r\n"); // Set to master mode
+    putsUSART((char*) "AT+ROLE=1\r\n"); // Set to master mode
     Comm_WaitsOK();
-    putsUSART("AT+CMOD=1\r\n"); // Set connection mode to any address
+    putsUSART((char*) "AT+CMOD=1\r\n"); // Set connection mode to any address
     Comm_WaitsOK();
     
     //putsUSART("AT+CMOD=0\r\n"); // Set connection mode to fixed address
@@ -19,7 +19,7 @@ void Comm_Init()
 void Comm_Send(char command)
 {
     char c[2];
-    sprintf("%c0\r\n", command);
+    sprintf((char*) "%c0\r\n", (const char*) &command);
     putsUSART(c);
 }
 
