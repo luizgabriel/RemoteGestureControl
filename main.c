@@ -61,26 +61,25 @@
 //</editor-fold>
 
 #include "system.h"
-#include "comm.h"
+#include "bluetooth.h"
 #include "mpu6050.h"
 #include "orientation.h"
+#include "app.h"
 
-orientation_t orient;
+void interrupt high_priority System_HighPriorityInterrupt()
+{
+    if (INTCONbits.TMR0IF) {
+        App_UpdateTimer0();
+        INTCONbits.TMR0IF = 0;
+    }
+}
+
 
 void main() {
     System_Init();
-    OrientationSystem_Init(&orient);     
+    App_Init();
     
     while (1) {
-        OrientationSystem_Update(&orient);
-        
-        GREEN_LED = orient.rot.x > 40;
-        WHITE_LED = orient.rot.x < -40;
-        RED_LED = orient.rot.y > 40;
-        YELLOW_LED = orient.rot.y < -40;
-        
-        __delay_us(50);
-        
-        //Comm_Send();
+        App_Update();
     }
 }

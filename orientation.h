@@ -10,14 +10,23 @@
 
 #include "mpu6050.h"
 
+typedef enum {
+    STABLE = 1,
+    UP = 2,
+    DOWN = 4,
+    RIGHT = 8,
+    LEFT = 16
+} orientation_states_t;
+
 typedef struct {
     vec3f rot;
-    vec3f gyro;
-    vec3f accel;
+    byte flags;
 } orientation_t;
 
-void OrientationSystem_Init(orientation_t* orient);
-void OrientationSystem_Update(orientation_t* orient);
+void OrientSys_Init();
+void OrientSys_Update();
+byte OrientSys_Is(orientation_states_t state);
+void OrientSys_SetFlag(orientation_states_t state, byte value);
 
 #endif	/* ORIENTATION_H */
 

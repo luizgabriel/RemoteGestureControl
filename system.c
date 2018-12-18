@@ -9,15 +9,10 @@ void System_Init()
     TRISEbits.RE1 = 0;
     TRISBbits.RB4 = 0;
     TRISDbits.RD5 = 0;
-    
-    //Initialize USART
-    CloseUSART();
-    
-    // spbrg = ( ( FOSC/BAUD ) / 64 ) -1 @Asynchronous @BRGH_Low
-    // 5 = (16Mhz | 38400 Baud rate)
-    OpenUSART(USART_TX_INT_OFF | USART_RX_INT_OFF | USART_ASYNCH_MODE 
-              | USART_EIGHT_BIT | USART_CONT_RX | USART_BRGH_LOW, 5);
-    baudUSART (BAUD_8_BIT_RATE | BAUD_AUTO_OFF);
+    WHITE_LED = 0;
+    RED_LED = 0;
+    GREEN_LED = 0;
+    YELLOW_LED = 0;
     
     //Initialize I2C
     CloseI2C();
@@ -26,8 +21,19 @@ void System_Init()
     // ((Fosc/BitRate)/4)-1 
     SSPADD = 39; //100kHz Baud clock(39) @16MHz
                  //400kHz Baud clock(9) @16MHz
+    
+    for (int i = 0; i < 10; i++)
+        __delay_ms(10);
 }
 
-float abs(float value) {
-    return (value < 0) ? -value : value;
+void System_OpenUSART(usart_baud_t baud)
+{
+    CloseUSART();
+    
+    // spbrg = ( ( FOSC/BAUD ) / 64 ) -1 @Asynchronous @BRGH_Low
+    OpenUSART(USART_TX_INT_OFF | USART_RX_INT_OFF | USART_ASYNCH_MODE | USART_EIGHT_BIT | USART_CONT_RX | USART_BRGH_HIGH, baud);
+    baudUSART(BAUD_8_BIT_RATE | BAUD_AUTO_OFF);
+    
+    for (int i = 0; i < 10; i++)
+        __delay_ms(10);
 }

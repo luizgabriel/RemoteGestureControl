@@ -1,6 +1,8 @@
 #include "orientation.h"
 
-void OrientationSystem_Init(orientation_t* orient)
+orientation_t orient;
+
+void OrientSys_Init()
 {   
     int s, i;
     do {
@@ -9,20 +11,43 @@ void OrientationSystem_Init(orientation_t* orient)
         for (i = 0; i < 20; i++)
             __delay_ms(10);
     } while (!s);
+    WHITE_LED = 0;
     
     //Reset Rotation
-    orient->rot.x = 0;
-    orient->rot.y = 0;
-    orient->rot.z = 0;
+    orient.rot.x = 0;
+    orient.rot.y = 0;
+    orient.rot.z = 0;
+    orient.flags = 0;
 }
 
-void OrientationSystem_Update(orientation_t* o)
+void OrientSys_Update()
 {
-    MPU_GetGyro(&o->gyro);
-    MPU_GetAccel(&o->accel);
+    vec3f gyro, accel;
+    MPU_GetGyro(&gyro);
+    MPU_GetAccel(&accel);
     
-    o->rot.x = atan(o->accel.x / sqrt(pow(o->accel.y, 2) + pow(o->accel.z, 2))) * 57.2958f;
-    o->rot.y = atan(o->accel.y / sqrt(pow(o->accel.x, 2) + pow(o->accel.z, 2))) * 57.2958f;
-    o->rot.z = atan(o->accel.z / sqrt(pow(o->accel.y, 2) + pow(o->accel.x, 2))) * 57.2958f;
+    orient.rot.x = atan(accel.x / sqrt(pow(accel.y, 2) + pow(accel.z, 2))) * 57.2958f;
+    orient.rot.y = atan(accel.y / sqrt(pow(accel.x, 2) + pow(accel.z, 2))) * 57.2958f;
+    orient.rot.z = atan(accel.z / sqrt(pow(accel.y, 2) + pow(accel.x, 2))) * 57.2958f;
+    
+    OrientSys_SetFlag(UP, orient.rot.y < -40);
+    OrientSys_SetFlag(DOWN, orient.rot.y > 40);
+    OrientSys_SetFlag(LEFT, orient.rot.x < -40);
+    OrientSys_SetFlag(RIGHT, orient.rot.x > 40);
+    OrientSys_SetFlag(STABLE, !OrientSys_Is(UP) && !OrientSys_Is(DOWN) && !OrientSys_Is(LEFT) && !OrientSys_Is(RIGHT));
+}
+
+byte OrientSys_Is(orientation_states_t state)
+{
+    return (orient.flags & state) != 0;
+}
+
+void OrientSys_SetFlag(orientation_states_t state, byte value)
+{
+    if (value) {
+        orient.flags |= state;
+    } else {
+        orient.flags &= ~(state);
+    }
 }
 
