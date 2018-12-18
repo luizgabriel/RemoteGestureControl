@@ -2,12 +2,13 @@
 
 void Bluetooth_Init()
 {
-    System_OpenUSART(USART_9600);
+    System_OpenUSART(USART_38400);
     Bluetooth_Send((char*) "AT+BAUD=4\r\n"); //Set baud 9600
     Bluetooth_Send((char*) "AT+NAME=RemoteGestureControl\r\n"); // Set device name
     Bluetooth_Send((char*) "AT+ROLE=0\r\n"); // Set to master mode
     Bluetooth_Send((char*) "AT+CMOD=1\r\n"); // Set connection mode to any address
     Bluetooth_Send((char*) "AT+PIN=5555\r\n"); // Set connection mode to any address
+    System_OpenUSART(USART_9600);
 }
 
 void Bluetooth_Send(char* text)
